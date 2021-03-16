@@ -225,14 +225,9 @@ export default function(Complaints, SelectImages) {
 
       let { active } = this.state;
       let complaints = this.state[active] ? this.state[active].complaints : [];
-      let srcWidth =
-        this.state.srcWidth !== undefined ? this.state.srcWidth : "";
+      let srcWidth = this.state.srcWidth;
 
-      if (
-        srcWidth !== "" &&
-        this.currentWidth !== srcWidth &&
-        complaints.length > 0
-      ) {
+      if (srcWidth && this.currentWidth !== srcWidth && complaints.length > 0) {
         complaints.forEach(item => {
           let positionX = "";
           let positionY = "";
@@ -449,8 +444,7 @@ class Drawing extends Component {
     canvas.height = this.props.parentImageSize;
     const context = canvas.getContext("2d");
     let allPointsArray = [];
-    const srcWidth =
-      this.props.srcWidth !== undefined ? this.props.srcWidth : "";
+    const srcWidth = this.props.srcWidth;
     const currentWidth = this.props.currentWidth;
     if (this.props.allPoints && this.props.allPoints.length > 0) {
       context.strokeStyle = "#df4b26";
@@ -459,7 +453,7 @@ class Drawing extends Component {
       context.beginPath();
       this.props.allPoints.forEach(group => {
         group.forEach((localPos, i) => {
-          if (srcWidth !== "" && currentWidth !== srcWidth) {
+          if (srcWidth && currentWidth !== srcWidth) {
             var positionX = "";
             var positionY = "";
             positionX = localPos.x * (currentWidth / srcWidth);
