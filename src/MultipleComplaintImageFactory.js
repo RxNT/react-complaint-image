@@ -230,6 +230,21 @@ export default function(Complaints, SelectImages) {
       let image = this.refs.image;
       image.width(width - imagePadding);
       image.height(width - imagePadding);
+
+      let { active } = this.state;
+      let complaints = this.state[active] ? this.state[active].complaints : [];
+      let srcWidth = this.state.srcWidth;
+
+      if (srcWidth && this.currentWidth !== srcWidth && complaints.length > 0) {
+        complaints.forEach(item => {
+          let positionX = "";
+          let positionY = "";
+          positionX = item.pos.x * (this.currentWidth / srcWidth);
+          positionY = item.pos.y * (this.currentWidth / srcWidth);
+          item.pos.x = Math.round(positionX);
+          item.pos.y = Math.round(positionY);
+        });
+      }
     }
 
     render() {
