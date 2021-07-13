@@ -304,7 +304,7 @@ export default function(Complaints, SelectImages) {
             </div>
             <hr />
             <div
-              className={"complaints-image-block"}
+              className="complaints-image-block"
               style={{ cursor: this.state.drawingMode ? "cell" : "default" }}
             >
               <Stage
